@@ -88,7 +88,7 @@
 
 .b{
     border-radius: 25px;
-    background: linear-gradient(156deg, rgba(23, 28, 38, 0.68) 13.71%, #5A6376 61.66%);
+    background: linear-gradient(90deg, #3C87A2 14%, #084B63 62%);
     grid-column-start: 8;
     grid-column-end: 11;
     grid-row-start: 2; 
