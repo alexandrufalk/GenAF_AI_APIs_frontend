@@ -59,7 +59,7 @@ const NavigationBar = () => {
             <div className="con-m">
               <img src={pdf}></img>
             </div>
-            <a href="http://localhost:3003/login-page" className="con-m">
+            <a href="http://localhost:3000/login-page" className="con-m">
               <img src={logout}></img>
             </a>
           </div>
@@ -93,8 +93,8 @@ const NavigationBar = () => {
         </div>
         {isDropdownOpen && (
           <div className="dropdown-content">
-            <a href="http://localhost:3003/login-page">Logout</a>
-            <a href="http://localhost:3003/login-page">Update profile</a>
+            <a href="http://localhost:3000/login-page">Logout</a>
+            <a href="http://localhost:3000/login-page">Update profile</a>
           </div>
         )}
 

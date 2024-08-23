@@ -3,14 +3,14 @@
 
  .bodyLI{
     
-    background: linear-gradient(90deg, #063A4C 42.2%, #5C9BB1 89.58%);
+    background: linear-gradient(90deg, #3C87A2 42.2%, rgba(10, 96, 126, 0.72) 89.58%);
      /* Full height */
     /* height: 100%;  */
     /* Center and scale the image nicely */
     /* background-position: center;
     background-repeat: no-repeat;
     background-size: cover; */
-    background-size: cover;
+    
     
  }
 
@@ -50,7 +50,7 @@
 .a1{
     
     background: rgba(0, 255, 34, 0.103);
-    background-image: url("./Logo3.png");
+    background-image: url("./Logo\ Landing\ Page.svg");
     background-size: contain; 
     background-repeat: no-repeat; /* Ensure the background image isn't repeated */
     background-position: center; /* Center the background image */
@@ -89,6 +89,7 @@
 .b{
     border-radius: 25px;
     background: linear-gradient(90deg, #3C87A2 14%, #084B63 62%);
+    border: 0.38px solid var(--Stroke-Nav, #E7F0F3);
     grid-column-start: 8;
     grid-column-end: 11;
     grid-row-start: 2; 
@@ -153,7 +154,7 @@
 @media screen and (min-width: 1920px){
     .a {
         /* background: rgba(0, 255, 34, 0.103); */
-        background-image: url("./Logo3.png");
+        background-image: url("./Logo\ Landing\ Page.svg");
         background-size: contain; 
         background-repeat: no-repeat; /* Ensure the background image isn't repeated */
         background-position: center; /* Center the background image */
@@ -170,7 +171,7 @@
     .b{
         border-radius: 25px;
         /* background: #9bf5b259; */
-        background: linear-gradient(156deg, rgba(23, 28, 38, 0.68) 13.71%, #5A6376 61.66%);
+        background: linear-gradient(90deg, #3C87A2 14%, #084B63 62%);
         grid-column-start: 8;
         grid-column-end: span 2;
         grid-row-start: 3; 
@@ -189,7 +190,7 @@
     .b{
         border-radius: 25px;
         /* background: #9bf5b259; */
-        background: linear-gradient(156deg, rgba(23, 28, 38, 0.68) 13.71%, #5A6376 61.66%);
+        background: linear-gradient(90deg, #3C87A2 14%, #084B63 62%);
         grid-column-start: 4;
         grid-column-end: 10;
         grid-row-start: 2; 
@@ -208,7 +209,7 @@
     .b{
         border-radius: 25px;
         /* background: #9bf5b259; */
-        background: linear-gradient(156deg, rgba(23, 28, 38, 0.68) 13.71%, #5A6376 61.66%);
+        background: linear-gradient(90deg, #3C87A2 14%, #084B63 62%);
         grid-column-start: 2;
         grid-column-end: 12;
         grid-row-start: 2; 
@@ -312,7 +313,7 @@
     border-radius: 12px;
     background: linear-gradient(91deg, #FFF 36.83%, rgba(255, 255, 255, 0.46) 96.87%);
     &:hover{
-        border: 0.38px solid #B86E9F;
+        border: 0.38px solid #cfd9e2;
         background: linear-gradient(91deg, #FFF 36.83%, rgba(255, 255, 255, 0.205) 96.87%);
     }
 }
@@ -488,10 +489,10 @@
     align-self: stretch;
     border-radius: 16px;
     border: 2px solid var(--indigo-50, #DFDEFC);
-    background: linear-gradient(91deg, #BCC2CE 36.54%, rgba(90, 99, 118, 0.48) 87.7%, rgba(255, 255, 255, 0.00) 97.08%);
+    background: linear-gradient(90deg, #5C9BB1 42.2%, #084B63 89.58%);
     &:hover{
-        border: 0.38px solid #B86E9F;
-        background: linear-gradient(91deg, #bcc2cee7 36.54%, rgba(90, 99, 118, 0.48) 87.7%, rgba(255, 255, 255, 0.00) 97.08%);
+        border: 0.38px solid #cdc8d8;
+        background: linear-gradient(90deg, #233c46 42.2%, #0b445a 89.58%);
     }
 }
 .LoginTxt{

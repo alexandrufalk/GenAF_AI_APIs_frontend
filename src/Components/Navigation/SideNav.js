@@ -62,12 +62,12 @@ const SideNav = () => {
               <div className="con">
                 <img src={home}></img>
                 <div className="txt" onClick={scrollToSummary}>
-                  Summary
+                  Home
                 </div>
               </div>
               <div className="con">
                 <img src={template}></img>
-                <div className="txt">New Template</div>
+                <div className="txt">Models</div>
               </div>
               <div className="con">
                 <img src={database}></img>
@@ -77,7 +77,7 @@ const SideNav = () => {
               </div>
               <div className="con">
                 <img src={add}></img>
-                <div className="txt">Add Case</div>
+                <div className="txt">New Model</div>
               </div>
               <div className="con">
                 <img src={pdf}></img>
