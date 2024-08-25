@@ -6,6 +6,12 @@ const ModelContainer = () => {
     { name: "Model 1", description: "Model 1 Description" },
     { name: "Model 2", description: "Model 2 Description" },
     { name: "Model 3", description: "Model 3 Description" },
+    { name: "Model 1", description: "Model 1 Description" },
+    { name: "Model 2", description: "Model 2 Description" },
+    { name: "Model 3", description: "Model 3 Description" },
+    { name: "Model 1", description: "Model 1 Description" },
+    { name: "Model 2", description: "Model 2 Description" },
+    { name: "Model 3", description: "Model 3 Description" },
     // Add more models here...
   ];
   return (

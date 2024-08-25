@@ -1,5 +1,17 @@
 .main-con{
-    display: flex;
-    flex-direction: column;
-    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
 }
+
+
+/* .main-con {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: repeat(1, auto);
+    gap: 32px 24px;
+    overflow-y: hidden;
+    height: 222px;
+    padding: 4px;
+    margin: -4px;
+} */
