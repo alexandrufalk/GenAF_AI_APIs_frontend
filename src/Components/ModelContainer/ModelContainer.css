@@ -1,0 +1,45 @@
+.modelcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 212px;
+    max-height: 212px;
+    min-height: 212px;
+    max-width: 282px;
+}
+
+
+.modelscon {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: repeat(1, auto);
+    gap: 32px 24px;
+    overflow-y: hidden;
+    height: 222px;
+    padding: 4px;
+    margin: -4px;
+}
+
+.modelbody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 16px 16px auto;
+}
+
+.modeltitle {
+    margin-bottom: 4px;
+    color: rgb(32, 33, 36);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.eTGNA {
+    margin-bottom: 4px;
+    color: rgb(32, 33, 36);
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+}

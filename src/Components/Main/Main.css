@@ -1,4 +1,5 @@
 .main-con{
     display: flex;
+    flex-direction: column;
     
 }
