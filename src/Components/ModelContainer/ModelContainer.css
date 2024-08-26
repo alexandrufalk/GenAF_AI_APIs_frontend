@@ -6,6 +6,9 @@
     max-height: 212px;
     min-height: 212px;
     max-width: 282px;
+    border:1px solid #8FBACA ;
+    border-radius: 10px;
+    
 }
 
 
@@ -13,6 +16,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 24px;
+    margin: 12px;
 }
 
 .modelbody {
@@ -30,11 +34,43 @@
     font-weight: 600;
 }
 
-.eTGNA {
+.modeldescription {
     margin-bottom: 4px;
     color: rgb(32, 33, 36);
     font-size: 12px;
     line-height: 20px;
     letter-spacing: 0.2px;
     font-weight: 400;
+    /* overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+    
+}
+
+.filter-container{
+    border-radius: 10px;
+    border: 1px solid #8FBACA;
+    margin: 4px;
+    padding: 4px;
+}
+
+.filters-container{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+
+    
+}
+
+.custom-select{
+    border-radius: 8px;
+    border: 1px solid #8FBACA;
+}
+
+.custom-input{
+    border-radius: 8px;
+    border: 1px solid #8FBACA;
 }
