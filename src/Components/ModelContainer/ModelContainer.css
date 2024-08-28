@@ -41,11 +41,36 @@
     line-height: 20px;
     letter-spacing: 0.2px;
     font-weight: 400;
+    overflow: hidden;
+    max-height: 130px;
     /* overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis; */
     
 }
+.modeldescription:hover {
+    overflow-y: auto; /* Show vertical scrollbar on hover */
+  }
+
+/* Custom scrollbar styles for WebKit browsers */
+.modeldescription::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .modeldescription::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .modeldescription::-webkit-scrollbar-thumb {
+    background: #8FBACA;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+  }
+  
+  .modeldescription::-webkit-scrollbar-thumb:hover {
+    background: #0A607E;
+  }
 
 .filter-container{
     border-radius: 10px;
