@@ -16,9 +16,10 @@ const ModelContainer = () => {
       dataType: "Images",
     },
     {
-      name: "Model 2",
-      description: "Model 2 Description",
-      task: "Regression",
+      name: "Object detection using EfficientNet-b0",
+      description:
+        "EfficientDet Object detection model (SSD with EfficientNet-b0 + BiFPN feature extractor, shared box predictor and focal loss), trained on COCO 2017 dataset.",
+      task: "Image Classification",
       dataType: "Numerical",
     },
     {
