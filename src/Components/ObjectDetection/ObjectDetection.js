@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import json_detection_classes from "./detection_classes";
+import "./ObjectDetection.css";
 
 const ObjectDetection = () => {
   const [file, setFile] = useState(null);
@@ -140,9 +141,35 @@ const ObjectDetection = () => {
 
   return (
     <div>
+      <div className="Model">
+        <div className="Frame2">
+          <div className="Frame4">
+            <div className="Rectangle1892"></div>
+            <div className="ModelName">
+              Object detection using EfficientNet-b0
+            </div>
+            <div className="ModelName small">Model Name</div>
+          </div>
+          <div className="Line3"></div>
+          <div className="Frame1187">
+            <div className="Button choose-file">
+              <div className="ButtonText">Choose file</div>
+            </div>
+            <div className="TestImageJpg">Test image.jpg</div>
+            <div className="Button object-detection">
+              <div className="ButtonText">Object Detection</div>
+            </div>
+          </div>
+          <img
+            className="UnsplashM6jQnonbM"
+            src="https://via.placeholder.com/781x530"
+            alt="Placeholder"
+          />
+        </div>
+      </div>
       <h2>Upload Image for Detection</h2>
       <input type="file" onChange={onFileChange} />
-      <button onClick={onFileUpload}>Upload</button>
+      <button onClick={onFileUpload}>Object Detection</button>
       {imageUrl && (
         <div style={{ position: "relative", display: "inline-block" }}>
           <img

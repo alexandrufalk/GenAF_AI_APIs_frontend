@@ -1,0 +1,119 @@
+=.Model {
+    width: 1436px;
+    height: 898px;
+    padding: 94px 323px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+  }
+  
+  .Frame2 {
+    width: 1436px;
+    height: 898px;
+    padding: 14px 0;
+    background: #f2f2f2;
+    border-radius: 40px;
+    border: 1px #0b698b solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .Frame4 {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: column;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .Rectangle1892 {
+    width: 239px;
+    height: 141px;
+    background: rgba(254, 254, 254, 0);
+  }
+  
+  .ModelName {
+    width: 207px;
+    height: 29px;
+    color: black;
+    font-size: 24px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+  }
+  
+  .ModelName.small {
+    font-size: 20px;
+    height: auto;
+  }
+  
+  .Line3 {
+    width: 1435px;
+    height: 0;
+    border: 1px #0b698b solid;
+  }
+  
+  .Frame1187 {
+    width: 787px;
+    padding: 0 8px;
+    background: #fdfdfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Button {
+    padding: 6px 12px;
+    background: #0b698b;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .Button.choose-file {
+    box-shadow: 0px 0px 0px 1px rgba(70, 78.67, 96, 0.16);
+  }
+  
+  .Button.object-detection {
+    box-shadow: 0px 0px 0px 1px #5e5adb;
+  }
+  
+  .ButtonText {
+    color: #fbfbfb;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.28px;
+    word-wrap: break-word;
+  }
+  
+  .TestImageJpg {
+    width: 189px;
+    height: 21px;
+    color: black;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.28px;
+    word-wrap: break-word;
+  }
+  
+  .UnsplashM6jQnonbM {
+    width: 781px;
+    height: 530px;
+    border-radius: 20px;
+    border: 3px #0b698b solid;
+  }
+  

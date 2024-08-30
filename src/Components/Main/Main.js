@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div className="main-con">
       <ModelContainer />
-      <ImagePred />
+      {/* <ImagePred /> */}
       <ObjectDetection />
     </div>
   );
