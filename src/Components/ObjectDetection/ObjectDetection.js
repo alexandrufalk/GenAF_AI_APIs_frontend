@@ -1,11 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import json_detection_classes from "./detection_classes";
+
 const ObjectDetection = () => {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [response, setResponse] = useState(null);
+  const [nrDetections, setNrDetections] = useState(0);
   const imageRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const classLabels = Object.keys(json_detection_classes).reduce((acc, key) => {
+    acc[key] = json_detection_classes[key].name;
+    return acc;
+  }, {});
+
+  const allowedClasses = [1, 37, 43];
+
+  console.log(classLabels);
 
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -47,32 +59,84 @@ const ObjectDetection = () => {
       canvas.width = image.width;
       canvas.height = image.height;
 
+      console.log("Detection Box1:", response.detection_boxes[0][1]);
+      console.log(
+        "Detection score",
+        response.detection_scores[0][0].toFixed(2)
+      );
+
+      // Filter detection results to include only allowed classes
+      const filteredIndices = response.detection_classes[0]
+        .map((classId, index) =>
+          allowedClasses.includes(classId) ? index : null
+        )
+        .filter((index) => index !== null);
+
+      console.log("filteredIndices:", filteredIndices);
+      console.log("response.detection_boxes[0]:", response.detection_boxes[0]);
+
       // Draw detection boxes
-      response.detection_boxes.forEach((box, index) => {
-        const [ymin, xmin, ymax, xmax] = box;
-        const x = xmin * image.width;
-        const y = ymin * image.height;
-        const width = (xmax - xmin) * image.width;
-        const height = (ymax - ymin) * image.height;
+      filteredIndices.forEach((index) => {
+        const box = response.detection_boxes[0][index];
+        const classId = response.detection_classes[0][index];
+        const score = response.detection_scores[0][index];
 
-        context.strokeStyle = "red";
-        context.lineWidth = 2;
-        context.strokeRect(x, y, width, height);
+        if (score > 0.51) {
+          console.log("box", box);
+          console.log("classId", classId);
+          console.log("score", score);
+          setNrDetections(nrDetections + 1);
 
-        // Optionally, draw class label and score
-        const classId = response.detection_classes[index];
-        const score = response.detection_scores[index];
-        // const score_2 = score.toFixed(2);
-        context.font = "18px Arial";
-        context.fillStyle = "red";
-        context.fillText(
-          `Class: ${classId} Score: ${score}`,
-          x,
-          y > 10 ? y - 5 : 10
-        );
+          const [ymin, xmin, ymax, xmax] = box;
+          const x = xmin * image.width;
+          const y = ymin * image.height;
+          const width = (xmax - xmin) * image.width;
+          const height = (ymax - ymin) * image.height;
+
+          // Draw the box
+          context.strokeStyle = "red";
+          context.lineWidth = 2;
+          context.strokeRect(x, y, width, height);
+
+          // Draw the label and score
+          const label = classLabels[classId] || `Class ${classId}`;
+          context.font = "18px Arial";
+          context.fillStyle = "red";
+          context.fillText(
+            `${label} (${score.toFixed(2)})`,
+            x,
+            y > 10 ? y - 5 : 10
+          );
+        }
       });
     }
   }, [response]);
+
+  //       response.detection_boxes[0].forEach((box, index) => {
+  //         const [ymin, xmin, ymax, xmax] = box;
+  //         const x = xmin * image.width;
+  //         const y = ymin * image.height;
+  //         const width = (xmax - xmin) * image.width;
+  //         const height = (ymax - ymin) * image.height;
+
+  //         context.strokeStyle = "red";
+  //         context.lineWidth = 2;
+  //         context.strokeRect(x, y, width, height);
+
+  //         // Optionally, draw class label and score
+  //         const classId = response.detection_classes[index];
+  //         const score = response.detection_scores[index];
+
+  //         context.font = "18px Arial";
+  //         context.fillStyle = "red";
+  //         context.fillText(
+  //           `Class: ${classId} Score: ${score}`,
+  //           x,
+  //           y > 10 ? y - 5 : 10
+  //         );
+  //       });
+  //     }
+  //   }, [response]);
 
   return (
     <div>
@@ -96,7 +160,7 @@ const ObjectDetection = () => {
       {response && (
         <div>
           <h3>Detection Results</h3>
-          <p>Number of Detections: {response.num_detections}</p>
+          <p>Number of Detections: {nrDetections + 1}</p>
         </div>
       )}
     </div>
