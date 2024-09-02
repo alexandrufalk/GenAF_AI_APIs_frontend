@@ -37,6 +37,10 @@ const SideNav = () => {
       behavior: "smooth", // Optional: Smooth scrolling animation
     });
   };
+
+  const navigateToApp = () => {
+    navigate("/genaf");
+  };
   return (
     <div className={viewNav ? open : closed}>
       {viewNav && (
@@ -59,13 +63,11 @@ const SideNav = () => {
               <div>MAIN</div>
             </div>
             <div className="List">
-              <div className="con">
+              <div className="con" onClick={navigateToApp}>
                 <img src={home}></img>
-                <div className="txt" onClick={scrollToSummary}>
-                  Home
-                </div>
+                <div className="txt">Home</div>
               </div>
-              <div className="con">
+              <div className="con" onClick={navigateToApp}>
                 <img src={template}></img>
                 <div className="txt">Models</div>
               </div>
@@ -106,10 +108,10 @@ const SideNav = () => {
           </div>
           <div className="main">
             <div className="List">
-              <div className="con" onClick={scrollToSummary}>
+              <div className="con" onClick={navigateToApp}>
                 <img src={home}></img>
               </div>
-              <div className="con">
+              <div className="con" onClick={navigateToApp}>
                 <img src={template}></img>
               </div>
               <div className="con">

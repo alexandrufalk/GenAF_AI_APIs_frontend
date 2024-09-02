@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./NavigationBar.css";
 import logo from "./GenAF AI logo.svg";
 import home from "./home-2.png";
@@ -13,6 +14,7 @@ import pdf from "./🦆 icon _save action floppy_.png";
 const NavigationBar = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isSideNav, setSideNav] = useState(false);
+  const navigate = useNavigate();
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -33,6 +35,10 @@ const NavigationBar = () => {
       top: 210,
       behavior: "smooth", // Optional: Smooth scrolling animation
     });
+  };
+
+  const navigateToApp = () => {
+    navigate("/genaf");
   };
   return (
     <div className="containernav sticky">
@@ -70,11 +76,11 @@ const NavigationBar = () => {
         <div className="logotxt">GenAF AI</div>
       </div>
       <div className="center">
-        <div className="center1" onClick={scrollToSummary}>
+        <div className="center1" onClick={navigateToApp}>
           <img src={home}></img>
           <div className="summary">Home</div>
         </div>
-        <div className="center1">
+        <div className="center1" onClick={navigateToApp}>
           <img src={template}></img>
           <div className="summary">Models</div>
         </div>
