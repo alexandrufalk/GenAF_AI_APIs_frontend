@@ -7,7 +7,7 @@ const ObjectDetection = () => {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [response, setResponse] = useState(null);
-  const [nrDetections, setNrDetections] = useState(0);
+  const [nrDetections, setNrDetections] = useState(1);
   const imageRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -47,7 +47,7 @@ const ObjectDetection = () => {
     }
   };
 
-  useEffect(() => {
+  const drawDetections = () => {
     if (response && imageRef.current && canvasRef.current) {
       const image = imageRef.current;
       const canvas = canvasRef.current;
@@ -60,12 +60,6 @@ const ObjectDetection = () => {
       canvas.width = image.width;
       canvas.height = image.height;
 
-      console.log("Detection Box1:", response.detection_boxes[0][1]);
-      console.log(
-        "Detection score",
-        response.detection_scores[0][0].toFixed(2)
-      );
-
       // Filter detection results to include only allowed classes
       const filteredIndices = response.detection_classes[0]
         .map((classId, index) =>
@@ -73,21 +67,14 @@ const ObjectDetection = () => {
         )
         .filter((index) => index !== null);
 
-      console.log("filteredIndices:", filteredIndices);
-      console.log("response.detection_boxes[0]:", response.detection_boxes[0]);
-
       // Draw detection boxes
       filteredIndices.forEach((index) => {
         const box = response.detection_boxes[0][index];
         const classId = response.detection_classes[0][index];
         const score = response.detection_scores[0][index];
+        setNrDetections(nrDetections + 1);
 
         if (score > 0.51) {
-          console.log("box", box);
-          console.log("classId", classId);
-          console.log("score", score);
-          setNrDetections(nrDetections + 1);
-
           const [ymin, xmin, ymax, xmax] = box;
           const x = xmin * image.width;
           const y = ymin * image.height;
@@ -111,6 +98,22 @@ const ObjectDetection = () => {
         }
       });
     }
+  };
+
+  useEffect(() => {
+    drawDetections();
+
+    // Redraw detection boxes when the window is resized
+    const handleResize = () => {
+      drawDetections();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [response]);
 
   //       response.detection_boxes[0].forEach((box, index) => {
@@ -140,48 +143,31 @@ const ObjectDetection = () => {
   //   }, [response]);
 
   return (
-    <div>
-      <div className="Model">
-        <div className="Frame2">
-          <div className="Frame4">
-            <div className="Rectangle1892"></div>
-            <div className="ModelName">
-              Object detection using EfficientNet-b0
-            </div>
-            <div className="ModelName small">Model Name</div>
-          </div>
-          <div className="Line3"></div>
-          <div className="Frame1187">
-            <div className="Button choose-file">
-              <div className="ButtonText">Choose file</div>
-            </div>
-            <div className="TestImageJpg">Test image.jpg</div>
-            <div className="Button object-detection">
-              <div className="ButtonText">Object Detection</div>
-            </div>
-          </div>
-          <img
-            className="UnsplashM6jQnonbM"
-            src="https://via.placeholder.com/781x530"
-            alt="Placeholder"
-          />
-        </div>
+    <div className="main-body">
+      <div className="body-header">
+        <div className="body-title">Model test</div>
+        <div className="body-description">Model Description</div>
       </div>
-      <h2>Upload Image for Detection</h2>
-      <input type="file" onChange={onFileChange} />
-      <button onClick={onFileUpload}>Object Detection</button>
+      <div className="buttons-container">
+        <input className="input" type="file" onChange={onFileChange} />
+        <button className="button" onClick={onFileUpload}>
+          Object Detection
+        </button>
+      </div>
       {imageUrl && (
-        <div style={{ position: "relative", display: "inline-block" }}>
-          <img
-            ref={imageRef}
-            src={imageUrl}
-            alt="Uploaded"
-            style={{ maxWidth: "100%" }}
-          />
-          <canvas
-            ref={canvasRef}
-            style={{ position: "absolute", top: 0, left: 0 }}
-          />
+        <div>
+          <div style={{ position: "relative", display: "inline-block" }}>
+            <img
+              ref={imageRef}
+              src={imageUrl}
+              alt="Uploaded"
+              style={{ maxWidth: "100%" }}
+            />
+            <canvas
+              ref={canvasRef}
+              style={{ position: "absolute", top: 0, left: 0 }}
+            />
+          </div>
         </div>
       )}
       {response && (
