@@ -1,4 +1,4 @@
-=.Model {
+.Model {
     width: 1436px;
     height: 898px;
     padding: 94px 323px;
@@ -10,16 +10,14 @@
   }
   
   .Frame2 {
-    width: 1436px;
-    height: 898px;
-    padding: 14px 0;
-    background: #f2f2f2;
-    border-radius: 40px;
-    border: 1px #0b698b solid;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 1248x; 
+    padding: 14px 0;
+    border-radius: 40px;
+    border: 1px #0b698b solid;
     gap: 4px;
   }
   

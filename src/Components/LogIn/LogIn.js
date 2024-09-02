@@ -12,7 +12,7 @@ const LogIn = () => {
   const navigate = useNavigate();
 
   const navigateToApp = () => {
-    navigate("/App");
+    navigate("/genaf");
   };
   return (
     <div className="bodyLI">

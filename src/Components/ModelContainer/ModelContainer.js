@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ModelContainer.css";
 
-const ModelContainer = () => {
+const ModelContainer = ({ onModelClick }) => {
   // State for selected task, data type, and search query
   const [selectedTask, setSelectedTask] = useState("All");
   const [selectedDataType, setSelectedDataType] = useState("All");
@@ -9,6 +9,7 @@ const ModelContainer = () => {
 
   const models = [
     {
+      id: "1",
       name: "Neural Network Regression",
       description:
         "The following describes a generalized process for inputting a set of numerical data, identifying patterns within the dataset, and subsequently generating a specific output value based on these identified patterns.",
@@ -16,6 +17,7 @@ const ModelContainer = () => {
       dataType: "Images",
     },
     {
+      id: "2",
       name: "Object detection using EfficientNet-b0",
       description:
         "EfficientDet Object detection model (SSD with EfficientNet-b0 + BiFPN feature extractor, shared box predictor and focal loss), trained on COCO 2017 dataset.",
@@ -161,7 +163,11 @@ const ModelContainer = () => {
       {/* Render filtered models */}
       <div className="modelscon">
         {filteredModels.map((model, index) => (
-          <div key={index} className="modelcon">
+          <div
+            key={index}
+            className="modelcon"
+            onClick={() => onModelClick(model)}
+          >
             <div className="modelbody">
               <div className="modeltitle">{model.name}</div>
               <div className="modeldescription">{model.description}</div>

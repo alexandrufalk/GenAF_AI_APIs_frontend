@@ -16,11 +16,6 @@ function App() {
       <div className="maincontainer">
         <Main />
       </div>
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>AI Tools</p>
-      </header> */}
     </div>
   );
 }

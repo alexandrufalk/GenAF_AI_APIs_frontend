@@ -10,13 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      {/* <Route path="/help" element={<Index />} />
-      <Route path="/nucleo-icons" element={<NucleoIcons />} />
-      <Route path="/landing-page" element={<LandingPage />} />
-      <Route path="/profile-page" element={<ProfilePage />} /> */}
-      <Route path="/App" element={<App />} />
+      {/* Make sure the path here matches what's inside Main.js */}
+      <Route path="/genaf/*" element={<App />} />
       <Route path="/login-page" element={<LogIn />} />
-
       <Route path="*" element={<Navigate to="/login-page" replace />} />
     </Routes>
   </BrowserRouter>
