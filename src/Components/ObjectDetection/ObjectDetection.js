@@ -123,32 +123,6 @@ const ObjectDetection = ({ model }) => {
     };
   }, [response]);
 
-  //       response.detection_boxes[0].forEach((box, index) => {
-  //         const [ymin, xmin, ymax, xmax] = box;
-  //         const x = xmin * image.width;
-  //         const y = ymin * image.height;
-  //         const width = (xmax - xmin) * image.width;
-  //         const height = (ymax - ymin) * image.height;
-
-  //         context.strokeStyle = "red";
-  //         context.lineWidth = 2;
-  //         context.strokeRect(x, y, width, height);
-
-  //         // Optionally, draw class label and score
-  //         const classId = response.detection_classes[index];
-  //         const score = response.detection_scores[index];
-
-  //         context.font = "18px Arial";
-  //         context.fillStyle = "red";
-  //         context.fillText(
-  //           `Class: ${classId} Score: ${score}`,
-  //           x,
-  //           y > 10 ? y - 5 : 10
-  //         );
-  //       });
-  //     }
-  //   }, [response]);
-
   return (
     <div className="main-body">
       <div className="body-header">
@@ -186,7 +160,19 @@ const ObjectDetection = ({ model }) => {
         <div className="body-subtitle">Test Object detection</div>
       </div>
       <div className="buttons-container">
-        <input className="input" type="file" onChange={onFileChange} />
+        <button
+          className="button"
+          onClick={() => document.getElementById("file-upload").click()}
+        >
+          Choose File
+        </button>
+        <input
+          id="file-upload"
+          type="file"
+          style={{ display: "none" }}
+          onChange={onFileChange}
+        />
+
         <button className="button" onClick={onFileUpload}>
           Object Detection
         </button>

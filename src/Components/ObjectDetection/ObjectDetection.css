@@ -1,10 +1,12 @@
 .main-body{
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     border-radius: 20px;
     border: 1px solid #8FBACA  ;
     margin: 16px;
+    box-shadow: -8px -8px 16px 0px #8FBACA;
+    backdrop-filter: blur(2px);
     .body-header{
         display: flex;
         flex-direction: column;
@@ -64,22 +66,31 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin: 8px;
-        .input{
-           
-            color: black;
-            font-size: 14;
-
-        }
+    
+         
+        
         .button{
+
             background-color: #0B698B;
             color: #FBFBFB;
             font-size: 14;
             cursor: pointer;
+            margin: 16px;
+            border-radius: 16px;
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
 
         }
     }
 }
+
+
+
+
+
+
 
 
 

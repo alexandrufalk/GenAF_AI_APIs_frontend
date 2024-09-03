@@ -38,7 +38,10 @@ const Main = () => {
           path=""
           element={<ModelContainer onModelClick={handleModelClick} />}
         />
-        <Route path="image-pred" element={<ImagePred />} />
+        <Route
+          path="image-pred"
+          element={<ImagePred model={selectedModel} />}
+        />
         <Route
           path="object-detection"
           element={<ObjectDetection model={selectedModel} />}
