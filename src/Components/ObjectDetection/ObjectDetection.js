@@ -3,13 +3,20 @@ import React, { useState, useEffect, useRef } from "react";
 import json_detection_classes from "./detection_classes";
 import "./ObjectDetection.css";
 
-const ObjectDetection = () => {
+const ObjectDetection = ({ model }) => {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [response, setResponse] = useState(null);
   const [nrDetections, setNrDetections] = useState(1);
   const imageRef = useRef(null);
   const canvasRef = useRef(null);
+
+  const outputLines = model.output.split("\n");
+  const hasMultipleLines = outputLines.length > 1;
+
+  console.log("Output lines: ", outputLines.length);
+
+  console.log("Model in object detection", model);
 
   const classLabels = Object.keys(json_detection_classes).reduce((acc, key) => {
     acc[key] = json_detection_classes[key].name;
@@ -82,14 +89,14 @@ const ObjectDetection = () => {
           const height = (ymax - ymin) * image.height;
 
           // Draw the box
-          context.strokeStyle = "red";
+          context.strokeStyle = "blue";
           context.lineWidth = 2;
           context.strokeRect(x, y, width, height);
 
           // Draw the label and score
           const label = classLabels[classId] || `Class ${classId}`;
           context.font = "18px Arial";
-          context.fillStyle = "red";
+          context.fillStyle = "blue";
           context.fillText(
             `${label} (${score.toFixed(2)})`,
             x,
@@ -145,8 +152,38 @@ const ObjectDetection = () => {
   return (
     <div className="main-body">
       <div className="body-header">
-        <div className="body-title">Model test</div>
-        <div className="body-description">Model Description</div>
+        <div className="body-title">{model.name}</div>
+        <div className="body-description">{model.description}</div>
+      </div>
+      <div className="body-header">
+        <div className="body-title">Model Details</div>
+        <div className="body-description">Description</div>
+        <div className="body-subtitle">Input</div>
+        <div className="body-description">
+          <p>{model.input}</p>
+        </div>
+        <div className="body-subtitle">Output</div>
+        <div className="body-description">
+          {hasMultipleLines ? (
+            <ul>
+              {outputLines.map((line, index) => {
+                const [boldText, regularText] = line.split(":");
+
+                return (
+                  <li key={index}>
+                    <strong>{boldText}:</strong>
+                    {regularText}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>{model.output}</p>
+          )}
+        </div>
+      </div>
+      <div className="body-header">
+        <div className="body-subtitle">Test Object detection</div>
       </div>
       <div className="buttons-container">
         <input className="input" type="file" onChange={onFileChange} />

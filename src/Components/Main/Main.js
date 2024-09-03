@@ -12,6 +12,7 @@ import ObjectDetection from "../ObjectDetection/ObjectDetection";
 
 const Main = () => {
   const navigate = useNavigate();
+  const [selectedModel, setSelectedmodel] = useState(null);
   // const [selectedModel, setSelectedModel] = useState(null);
   // const handleModelSelection = (model) => {
   //   setSelectedModel(model);
@@ -19,6 +20,7 @@ const Main = () => {
   // };
   const handleModelClick = (model) => {
     console.log(`Clicked model name ${model.name}`);
+    setSelectedmodel(model);
 
     if (model.name === "Neural Network Regression") {
       navigate("/genaf/image-pred");
@@ -37,7 +39,10 @@ const Main = () => {
           element={<ModelContainer onModelClick={handleModelClick} />}
         />
         <Route path="image-pred" element={<ImagePred />} />
-        <Route path="object-detection" element={<ObjectDetection />} />
+        <Route
+          path="object-detection"
+          element={<ObjectDetection model={selectedModel} />}
+        />
       </Routes>
     </div>
   );
