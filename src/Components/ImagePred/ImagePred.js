@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import "./ImagePred.css";
 
 function ImagePred({ model }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -71,7 +72,7 @@ function ImagePred({ model }) {
         </div>
       </div>
       <div className="body-header">
-        <div className="body-subtitle">Test Object detection</div>
+        <div className="body-subtitle">Test Food Prediction</div>
       </div>
       {/* <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} accept="image/*" />
@@ -95,6 +96,13 @@ function ImagePred({ model }) {
           <button className="button">Predict</button>
         </form>
       </div>
+      {prediction && (
+        <div>
+          <div className="prediction">
+            Prediction: {JSON.stringify(prediction)}
+          </div>
+        </div>
+      )}
       {imageUrl && (
         <div>
           <div style={{ position: "relative", display: "inline-block" }}>
@@ -107,7 +115,6 @@ function ImagePred({ model }) {
           </div>
         </div>
       )}
-      {prediction && <div>Prediction: {JSON.stringify(prediction)}</div>}
     </div>
   );
 }
