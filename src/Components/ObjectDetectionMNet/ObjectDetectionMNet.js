@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import json_detection_classes from "./detection_classes";
-import "./ObjectDetection.css";
+import json_detection_classes from "../ObjectDetection/detection_classes.json";
+import "../ObjectDetection/ObjectDetection.css";
 
-const ObjectDetection = ({ model }) => {
+const ObjectDetectionMNet = ({ model }) => {
   const [file, setFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [response, setResponse] = useState(null);
@@ -25,7 +25,7 @@ const ObjectDetection = ({ model }) => {
 
   const allowedClasses = [1, 37, 43];
 
-  console.log(classLabels);
+  console.log("classLabels", classLabels);
 
   const onFileChange = (e) => {
     const selectedFile = e.target.files[0];
@@ -38,7 +38,7 @@ const ObjectDetection = ({ model }) => {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:5000/detect", {
+      const res = await fetch("http://localhost:5000/detect_mnet", {
         method: "POST",
         body: formData,
       });
@@ -48,10 +48,10 @@ const ObjectDetection = ({ model }) => {
       }
 
       const data = await res.json();
-      console.log("data objectdetection:", data);
       setResponse(data);
+      console.log("data objectdetection mnet:", data);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error (ObjectdetectioMNet):", error);
     }
   };
 
@@ -69,22 +69,21 @@ const ObjectDetection = ({ model }) => {
       canvas.height = image.height;
 
       // Filter detection results to include only allowed classes
-      const filteredIndices = response.detection_classes[0]
-        .map((classId, index) =>
-          allowedClasses.includes(classId) ? index : null
-        )
-        .filter((index) => index !== null);
-
-      console.log("filteredIndices", filteredIndices);
+      //   const filteredIndices = response.detection_classes
+      //     .map((classId, index) =>
+      //       allowedClasses.includes(classId) ? index : null
+      //     )
+      //     .filter((index) => index !== null);
+      const filteredIndices = Array.from(Array(10).keys());
 
       // Draw detection boxes
       filteredIndices.forEach((index) => {
-        const box = response.detection_boxes[0][index];
-        const classId = response.detection_classes[0][index];
-        const score = response.detection_scores[0][index];
+        const box = response.detection_boxes[index];
+        const classId = response.detection_entries[index];
+        const score = response.detection_scores[index];
         setNrDetections(nrDetections + 1);
 
-        if (score > 0.51) {
+        if (score > 0.3) {
           const [ymin, xmin, ymax, xmax] = box;
           const x = xmin * image.width;
           const y = ymin * image.height;
@@ -206,4 +205,4 @@ const ObjectDetection = ({ model }) => {
   );
 };
 
-export default ObjectDetection;
+export default ObjectDetectionMNet;

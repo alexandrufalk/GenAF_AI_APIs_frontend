@@ -36,10 +36,17 @@ const ModelContainer = ({ onModelClick }) => {
         detection_scores: a tf.float32 tensor of shape [N] containing detection scores.`,
     },
     {
-      name: "Model 3",
+      name: "Object detection using mobilenet_v2",
       description: "Model 3 Description",
       task: "Computer Vision and CNN",
       dataType: "Images",
+      model_details: "",
+      input:
+        "A three-channel image of variable size - the model does NOT support batching. The input tensor is a tf.uint8 tensor with shape [1, height, width, 3] with values in [0, 255].",
+      output: `num_detections: a tf.int tensor with only one value, the number of detections [N].
+        detection_boxes: a tf.float32 tensor of shape [N, 4] containing bounding box coordinates in the following order [ymin, xmin, ymax, xmax].
+        detection_classes: a tf.int tensor of shape [N] containing detection class index from the label file.
+        detection_scores: a tf.float32 tensor of shape [N] containing detection scores.`,
     },
     {
       name: "Model 1",
