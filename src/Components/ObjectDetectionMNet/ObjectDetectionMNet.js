@@ -96,7 +96,7 @@ const ObjectDetectionMNet = ({ model }) => {
           context.strokeRect(x, y, width, height);
 
           // Draw the label and score
-          const label = classLabels[classId] || `Class ${classId}`;
+          const label = classLabels[classId] || ` ${classId}`;
           context.font = "18px Arial";
           context.fillStyle = "blue";
           context.fillText(
