@@ -10,6 +10,7 @@ import "./Main.css";
 import ImagePred from "../ImagePred/ImagePred";
 import ObjectDetection from "../ObjectDetection/ObjectDetection";
 import ObjectDetectionMNet from "../ObjectDetectionMNet/ObjectDetectionMNet";
+import ImageGen from "../ImageGen/ImageGen";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -29,6 +30,8 @@ const Main = () => {
       navigate("/genaf/object-detection");
     } else if (model.name === "Object detection using mobilenet_v2") {
       navigate("/genaf/object-detection-mnet");
+    } else if (model.name === "Image Generation") {
+      navigate("/genaf/generate-img");
     } else {
       console.warn("No matching route for this model");
     }
@@ -52,6 +55,10 @@ const Main = () => {
         <Route
           path="object-detection-mnet"
           element={<ObjectDetectionMNet model={selectedModel} />}
+        />
+        <Route
+          path="generate-img"
+          element={<ImageGen model={selectedModel} />}
         />
       </Routes>
     </div>
