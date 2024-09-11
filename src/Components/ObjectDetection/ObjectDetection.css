@@ -83,6 +83,20 @@
             padding-bottom: 4px;
 
         }
+
+        .prompt{
+            font-size: 14px;
+            font-weight: 600;
+            margin: 16px;
+            margin-bottom: 8px;
+            margin-top: 8px;
+            color: #0B698B;
+            border-radius: 16px;
+            border: 2px solid #8FBACA  ;
+            padding-left: 8px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
     }
 }
 
