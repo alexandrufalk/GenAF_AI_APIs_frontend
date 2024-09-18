@@ -50,7 +50,8 @@ const ModelContainer = ({ onModelClick }) => {
     },
     {
       name: "Image Generation",
-      description: "Image Generation using Stable Diffusion",
+      description:
+        "Image Generation using Stable Diffusion. First text prompt gets projected into a latent vector space by the text encoder, which is simply a pretrained, frozen language model. Then that prompt vector is concatenated to a randomly generated noise patch, which is repeatedly denoised by the diffusion model over a series of steps (the more steps you run the clearer and nicer your image will be – the default value is 50 steps).",
       task: "Image generation",
       dataType: "Images",
       model_details: "",
