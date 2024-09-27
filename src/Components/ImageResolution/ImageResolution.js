@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
-import "./ImagePred.css";
+import "../ImagePred/ImagePred.css";
 
 function ImagePred({ model }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [prediction, setPrediction] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [imageSrc, setImageSrc] = useState(null);
 
   const imageRef = useRef(null);
 
@@ -26,15 +27,16 @@ function ImagePred({ model }) {
     formData.append("file", selectedFile);
 
     try {
-      const response = await fetch("http://localhost:5000/resolution", {
+      const response = await fetch("http://localhost:5000/resolution2", {
         method: "POST",
         body: formData,
       });
 
       const data = await response.json();
       if (data.prediction) {
-        setPrediction(data.prediction);
+        setImageSrc(`data:image/png;base64,${data.prediction}`);
       }
+      setPrediction(data.prediction);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -102,6 +104,7 @@ function ImagePred({ model }) {
         <div>
           <div className="prediction">
             Prediction: {JSON.stringify(prediction)}
+            {imageSrc && <img src={imageSrc} alt="Upscaled prediction" />}
           </div>
         </div>
       )}

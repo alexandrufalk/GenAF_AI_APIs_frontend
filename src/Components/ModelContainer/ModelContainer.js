@@ -59,10 +59,13 @@ const ModelContainer = ({ onModelClick }) => {
       output: `Image`,
     },
     {
-      name: "Model 2",
+      name: "Resolution Improvment",
       description: "Model 2 Description",
-      task: "Time Series",
-      dataType: "Time Series",
+      task: "Image resolution enhancement",
+      dataType: "Images",
+      model_details: "",
+      input: "Image",
+      output: `Image`,
     },
     {
       name: "Model 3",

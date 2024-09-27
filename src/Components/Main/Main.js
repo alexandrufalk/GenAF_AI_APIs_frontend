@@ -11,6 +11,7 @@ import ImagePred from "../ImagePred/ImagePred";
 import ObjectDetection from "../ObjectDetection/ObjectDetection";
 import ObjectDetectionMNet from "../ObjectDetectionMNet/ObjectDetectionMNet";
 import ImageGen from "../ImageGen/ImageGen";
+import ImageResoltion from "../ImageResolution/ImageResolution";
 
 const Main = () => {
   const navigate = useNavigate();
@@ -32,6 +33,8 @@ const Main = () => {
       navigate("/genaf/object-detection-mnet");
     } else if (model.name === "Image Generation") {
       navigate("/genaf/generate-img");
+    } else if (model.name === "Resolution Improvment") {
+      navigate("/genaf/resolution-img");
     } else {
       console.warn("No matching route for this model");
     }
@@ -59,6 +62,10 @@ const Main = () => {
         <Route
           path="generate-img"
           element={<ImageGen model={selectedModel} />}
+        />
+        <Route
+          path="resolution-img"
+          element={<ImageResoltion model={selectedModel} />}
         />
       </Routes>
     </div>
